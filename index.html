@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tin học vui – Lớp 7, 8, 9</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#e8fbf3;--card:#fff;--ink:#1d1647;--mut:#5d5a7a;--acc:#6c4cf0;--sun:#ffc233;--pink:#ff5c8a;--line:#cfc8f5;--sh:#1d1647;--kl:#cfeaf8;--pk:#ffe2a8;--kh:#e5d4ff;--good:#16a05a;--bad:#e0244f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17122e;--card:#272050;--ink:#f4f0ff;--mut:#b2acd6;--acc:#9a84ff;--line:#4a4180;--sh:#000;--kl:#1f4a63;--pk:#6a5218;--kh:#47336f}}
+:root[data-theme="dark"]{--bg:#17122e;--card:#272050;--ink:#f4f0ff;--mut:#b2acd6;--acc:#9a84ff;--line:#4a4180;--sh:#000;--kl:#1f4a63;--pk:#6a5218;--kh:#47336f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Nunito,system-ui,sans-serif}
+h1,h2,h3{font-family:'Baloo 2',Nunito,system-ui,sans-serif;line-height:1.15;margin:0}
+main{max-width:720px;margin:0 auto;padding:14px 14px 40px}
+h1{font-size:2.1rem;font-weight:800}header p{margin:2px 0 10px;color:var(--mut)}
+nav{display:flex;gap:6px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:6px 0;z-index:5}
+button{font-family:inherit;color:var(--ink);cursor:pointer}button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+nav button{flex:1;padding:10px 2px;border:3px solid var(--ink);background:var(--card);border-radius:14px;font-weight:700;box-shadow:3px 3px 0 var(--sh)}
+nav button[aria-selected=true]{background:var(--acc);color:#fff;transform:translate(2px,2px);box-shadow:1px 1px 0 var(--sh)}
+section{display:none;margin-top:10px}section.on{display:block}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:18px;padding:14px;margin-top:12px;box-shadow:4px 4px 0 var(--sh)}
+.hint{color:var(--mut);font-size:.92rem;margin:4px 0 10px}
+.tg{display:flex;gap:6px;margin-top:10px}.tg button{flex:1;padding:9px;border:3px solid var(--ink);border-radius:12px;background:var(--card);font-weight:800}
+.tg button[aria-pressed=true]{background:var(--sun);color:#1d1647}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.el{border:3px solid transparent;border-radius:10px;padding:3px 0;text-align:center}
+.el b{display:block;font:800 1.2rem 'Baloo 2',sans-serif;line-height:1.1}.el small{font-size:.62rem;color:var(--mut);display:block}
+.el.k{background:var(--kl)}.el.p{background:var(--pk)}.el.h{background:var(--kh)}.el[aria-pressed=true]{border-color:var(--ink)}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.85rem;margin-top:8px}.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:8px 0}.info dt{color:var(--mut)}.info dd{margin:0;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:7px 12px;border-radius:999px;border:3px solid var(--ink);background:var(--card);font-weight:800}
+.chip[aria-pressed=true]{background:var(--pink);color:#fff}
+.act{margin-top:10px;padding:8px;border-radius:10px;background:var(--kl);font-size:.9rem;text-align:center}
+.stage{display:flex;justify-content:center;align-items:flex-end;height:200px}
+.beaker{width:140px;height:170px;border:4px solid var(--ink);border-top:none;border-radius:0 0 30px 30px;position:relative;overflow:hidden;background:rgba(150,200,230,.15)}
+.beaker.sk{animation:sk .35s 4}@keyframes sk{25%{transform:translateX(-7px) rotate(-3deg)}75%{transform:translateX(7px) rotate(3deg)}}
+.liquid{position:absolute;inset:auto 0 0 0;height:58%;background:#bfe6ef;transition:background 1s}
+.ppt{position:absolute;inset:auto 0 0 0;height:0;transition:height 1.4s .3s}
+.face{position:absolute;left:0;right:0;top:62px;text-align:center;font-size:2.6rem;z-index:2;transition:transform .2s}
+.bub{position:absolute;bottom:0;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.9);animation:up 1.5s infinite ease-in}
+@keyframes up{to{transform:translateY(-140px);opacity:0}}
+.pt{position:fixed;bottom:34%;font-size:1.7rem;pointer-events:none;animation:pf 1.5s forwards;z-index:9}
+@keyframes pf{to{transform:translateY(-170px) rotate(50deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bub,.pt,.beaker.sk{animation:none}}
+.row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{padding:11px 18px;border:3px solid var(--ink);border-radius:12px;background:var(--acc);color:#fff;font-weight:800;box-shadow:3px 3px 0 var(--sh)}
+.btn.alt{background:var(--card);color:var(--ink)}.btn:disabled{opacity:.45}
+.eq{font:800 1.15rem 'Baloo 2',sans-serif;overflow-x:auto;white-space:nowrap;padding:4px 0}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-weight:800;font-size:.85rem;background:var(--sun);color:#1d1647}
+.mol{display:flex;gap:8px;align-items:flex-start;margin-top:8px}.mol span{font-size:1.8rem}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:11px;border-radius:12px;border:3px solid var(--ink);background:var(--card);font-weight:700}
+.opt.ok{background:color-mix(in srgb,var(--good) 30%,var(--card))}.opt.no{background:color-mix(in srgb,var(--bad) 30%,var(--card))}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);transition:width .3s}
+.why{margin-top:10px;padding:10px;border-left:5px solid var(--sun);background:var(--bg);border-radius:6px}
+input{width:100%;padding:10px;border:3px solid var(--ink);border-radius:10px;font:700 1rem Nunito,sans-serif;background:var(--card);color:var(--ink)}
+details.card summary{font:800 1.15rem 'Baloo 2',sans-serif;cursor:pointer}details.card summary span{font-size:1.4rem}
+details.card p{margin:8px 0}details.card ul{margin:6px 0;padding-left:20px}details.card li{margin:3px 0}
+.tip{background:var(--bg);border-left:5px solid var(--sun);border-radius:6px;padding:8px 10px}
+.demo{background:var(--bg);border:3px dashed var(--ink);border-radius:14px;padding:12px;margin-top:10px;text-align:center}
+.at{display:flex;justify-content:space-between;align-items:center;max-width:300px;margin:0 auto;position:relative;transition:max-width .6s}
+.ci{width:72px;height:72px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center;font:800 1.3rem 'Baloo 2',sans-serif;background:var(--pk);transition:background .6s}
+.ci.c,.ci.h{background:var(--kl)}
+.eb{position:absolute;left:78px;font-size:1.2rem;transition:left .8s}
+.demo.on .eb{left:calc(100% - 100px)}.demo.on .n{background:#9ec5ff;color:#1d1647}.demo.on .c{background:#ffb0c0;color:#1d1647}
+.demo:not(.on) .y,.demo.on .x{display:none}
+.cv.on .at{max-width:150px}.cv .eb{left:50%;transform:translateX(-50%);opacity:0}.cv.on .eb{left:50%;opacity:1}
+.cap{min-height:4.6em;margin:10px 0 6px;font-weight:700}
+nav{overflow-x:auto}nav button{flex:1 0 auto;font-size:.85rem;white-space:nowrap;padding:10px 9px}
+.gh{margin:18px 0 0;font-size:1.3rem}
+.sp{display:inline-flex;align-items:center;gap:4px;margin:4px 2px;font-weight:800}.sp button{width:30px;height:30px;border:3px solid var(--ink);border-radius:8px;background:var(--card);font-weight:800}
+select{padding:8px;border:3px solid var(--ink);border-radius:10px;background:var(--card);color:var(--ink);font:700 1rem Nunito,sans-serif}
+.ok2{color:var(--good);font-weight:800}.bad2{color:var(--bad);font-weight:800}
+.fc{min-height:150px;display:grid;place-items:center;text-align:center;font:800 1.9rem 'Baloo 2',sans-serif;cursor:pointer;border:3px dashed var(--ink);border-radius:16px;padding:14px;background:var(--bg);margin:6px 0}
+table{width:100%;border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid var(--line);text-align:left}
+</style>
+</head><body><main>
+<header><h1>Tin học vui 💻</h1><p>Kiến thức, thực hành và luyện tập Tin học cho lớp 7, 8, 9.</p></header>
+<div class="card" id="acct" style="display:none;margin-top:0"></div><div class="card" id="asg" style="display:none"></div>
+<nav role="tablist"><button role="tab" aria-selected="true" data-t="t0">Bài học</button><button role="tab" aria-selected="false" data-t="t1">Thuật ngữ</button><button role="tab" aria-selected="false" data-t="t2">Thực hành</button><button role="tab" aria-selected="false" data-t="t3">Luyện tập</button><button role="tab" aria-selected="false" data-t="t4">Kết quả</button></nav>
+<section id="t0" class="on"><div id="les"></div></section>
+<section id="t1"><div id="vw"></div></section>
+<section id="t2"><div id="sk"><p class="hint">Bốn công cụ thực hành giúp hiểu bản chất.</p>
+<details class="card"><summary><span>🔢</span> A. Chuyển đổi nhị phân</summary><div id="sA"></div></details>
+<details class="card"><summary><span>📈</span> B. Luyện hàm bảng tính</summary><div id="sB"></div></details>
+<details class="card"><summary><span>🫧</span> C. Sắp xếp nổi bọt</summary><div id="sC"></div></details>
+<details class="card"><summary><span>🎯</span> D. Tìm kiếm nhị phân</summary><div id="sD"></div></details>
+</div></section>
+<section id="t3"><div class="card" id="quiz"></div></section>
+<section id="t4"><div class="card" id="rs"></div></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js"></script>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),sub=s=>s;
+const rnd=a=>a[Math.floor(Math.random()*a.length)],shuf=a=>[...a].sort(()=>Math.random()-.5);
+function spawn(e,n){for(let i=0;i<n;i++){const s=document.createElement('span');s.className='pt';s.textContent=e;s.style.left=(15+Math.random()*70)+'vw';s.style.animationDelay=Math.random()*.5+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2200)}}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t))});
+const SB_URL='https://fpglnulblraiviiypaeq.supabase.co',SB_KEY='sb_publishable_-XHUDFaDuyjN3UEto0bdwQ_amS0Ym1I',VN='https://giadinhsumhop.github.io/Viec-nha/';
+let sb=null;try{sb=window.supabase?supabase.createClient(SB_URL,SB_KEY):null}catch(e){}
+const P=new URLSearchParams(location.search),TASK=P.get('task'),PASS=+P.get('pass')||70;
+let ME=null,NAME='',MEM={};
+const SKN=['Viết công thức','Cân bằng phương trình','Tính theo PTHH','Nhận biết chất','Chuỗi phản ứng'];
+async function acct(){const a=$('#acct');a.style.display='block';
+if(!sb){a.textContent='Chế độ học tự do (chưa kết nối Việc nhà).';return}
+try{const {data:{session}}=await sb.auth.getSession();
+if(!session){a.innerHTML=`Bạn chưa đăng nhập nên điểm chưa được lưu. <a href="${VN}">Mở Việc nhà để đăng nhập</a> rồi quay lại.`;return}
+ME=session.user.id;const {data}=await sb.from('members').select('id,name');(data||[]).forEach(m=>MEM[m.id]=m.name);NAME=MEM[ME]||'bạn';
+a.innerHTML=`👋 Xin chào <b>${esc(NAME)}</b>! Điểm của bạn sẽ được lưu. <a href="${VN}">← Về Việc nhà</a>`}catch(e){a.textContent='Không kết nối được máy chủ. Bạn vẫn học bình thường nhưng điểm sẽ không được lưu.'}}
+async function save(topic,score,total,taskDone){
+if(!sb||!ME)return 'Chưa đăng nhập nên chưa lưu được.';
+try{const r=await sb.from('hoa_results').insert({topic:'tin:'+topic,score,total,task_id:TASK});if(r.error)throw r.error;
+if(TASK&&taskDone){const u=await sb.from('tasks').update({done:true,done_at:new Date().toISOString()}).eq('id',TASK);if(u.error)throw u.error;return 'Đã lưu kết quả và báo hoàn thành cho Việc nhà ✅'}
+return 'Đã lưu kết quả.'}catch(e){return 'Lưu lỗi: '+e.message+' (đã chạy file SQL chưa?)'}}
+async function finish(btn,topic){btn.disabled=true;const m=await save(topic,null,null,true);btn.parentElement.nextElementSibling.textContent=m;if(m.includes('✅'))spawn('🎉',8)}
+
+const ST={a:'Tất cả',k:'Kiến thức',c:'Tính toán & thuật toán',t:'Thuật ngữ'};
+let qt='a',qn=10,qi=0,sc=0,qs=[],qrun=false;
+const LS=[
+['📊','Thông tin và dữ liệu',`<ul><li><b>Dữ liệu</b> là các giá trị thô (số, chữ, hình ảnh, âm thanh). <b>Thông tin</b> là ý nghĩa rút ra từ dữ liệu: 38,5 là dữ liệu, "bạn đang sốt" là thông tin.</li><li>Đơn vị nhỏ nhất là <b>bit</b> (0 hoặc 1). 1 byte = 8 bit; 1 KB = 1024 byte; 1 MB = 1024 KB; 1 GB = 1024 MB.</li><li>Thông tin tốt cần chính xác, đầy đủ và kịp thời.</li></ul>`],
+['🔢','Biểu diễn thông tin trong máy tính',`<p>Máy tính dùng <b>hệ nhị phân</b> (chỉ có 0 và 1) vì dễ tạo ra bằng hai trạng thái bật và tắt. Chữ, số, hình ảnh, âm thanh đều được mã hoá thành dãy bit.</p><ul><li>Đổi nhị phân sang thập phân: cộng các giá trị vị trí có bit 1. 1011₂ = 8 + 2 + 1 = 11.</li><li>Mã ASCII: chữ A có mã 65 = 01000001₂.</li></ul><p class="tip">💡 Thử công cụ A trong tab Thực hành để tự bật tắt từng bit.</p>`],
+['🖥️','Phần cứng và phần mềm',`<ul><li><b>Phần cứng:</b> CPU (xử lí), RAM (nhớ tạm), ổ cứng hoặc SSD (lưu lâu dài), thiết bị vào (bàn phím, chuột, micro), thiết bị ra (màn hình, máy in, loa).</li><li><b>Phần mềm:</b> hệ điều hành (Windows, Android) và phần mềm ứng dụng (Word, Excel, Chrome).</li></ul><p class="tip">💡 RAM mất dữ liệu khi tắt máy, ổ cứng thì không.</p>`],
+['🌐','Mạng máy tính và Internet',`<ul><li><b>Mạng máy tính:</b> nhiều thiết bị nối với nhau để trao đổi dữ liệu. LAN là mạng nhỏ (nhà, trường), WAN là mạng rộng.</li><li><b>Internet</b> là mạng của các mạng trên toàn cầu. Router nối mạng của bạn với Internet.</li><li>Mỗi thiết bị có <b>địa chỉ IP</b>, mỗi trang web có <b>URL</b> và được xem bằng trình duyệt.</li><li>Dịch vụ: WWW, thư điện tử, tìm kiếm, học trực tuyến.</li></ul>`],
+['🔐','An toàn thông tin và đạo đức',`<ul><li><b>Mật khẩu mạnh:</b> từ 8 kí tự, có chữ hoa, chữ thường, số, kí tự đặc biệt, không dùng ngày sinh. Không chia sẻ mật khẩu.</li><li>Cảnh giác <b>lừa đảo</b> (phishing): không bấm liên kết lạ, không đưa thông tin cá nhân.</li><li>Sao lưu dữ liệu quan trọng. Tôn trọng <b>bản quyền</b>. Không bắt nạt trên mạng.</li></ul><p class="tip">💡 Trước khi đăng gì lên mạng, hãy tự hỏi: có ai bị tổn thương không?</p>`],
+['📈','Phần mềm bảng tính',`<ul><li>Ô = cột + hàng, ví dụ <b>C5</b>. Công thức bắt đầu bằng dấu <b>=</b>: =A1+B1.</li><li>Hàm: <b>SUM</b> (tổng), <b>AVERAGE</b> (trung bình), <b>MAX</b>, <b>MIN</b>, <b>COUNT</b> (đếm ô chứa số). Vùng dữ liệu viết A1:A5.</li><li>Địa chỉ <b>tương đối</b> (A1) đổi khi sao chép công thức, địa chỉ <b>tuyệt đối</b> ($A$1) giữ nguyên.</li></ul><p class="tip">💡 Luyện hàm ở công cụ B.</p>`],
+['📊','Biểu đồ, sắp xếp và lọc dữ liệu',`<ul><li><b>Biểu đồ cột:</b> so sánh các giá trị. <b>Biểu đồ đường:</b> xu hướng theo thời gian. <b>Biểu đồ tròn:</b> tỉ lệ phần trăm của các phần trong một tổng.</li><li><b>Sắp xếp</b> dữ liệu tăng dần hoặc giảm dần. <b>Lọc</b> chỉ hiện các dòng thoả điều kiện.</li></ul><p class="tip">💡 Chọn loại biểu đồ theo mục đích muốn thể hiện.</p>`],
+['🧠','Soạn thảo, trình chiếu, sơ đồ tư duy',`<ul><li><b>Soạn thảo văn bản:</b> định dạng phông chữ, đoạn văn, chèn bảng và hình ảnh.</li><li><b>Trình chiếu:</b> ít chữ, nhiều hình, phông chữ và màu sắc nhất quán.</li><li><b>Sơ đồ tư duy:</b> ý chính ở giữa, các nhánh con, từ khoá ngắn gọn, dùng màu sắc.</li><li><b>Đa phương tiện</b> gồm văn bản, hình ảnh, âm thanh, video.</li></ul>`],
+['🔄','Thuật toán và sơ đồ khối',`<p><b>Thuật toán</b> là dãy hữu hạn các bước rõ ràng để giải một bài toán: đầu vào → xử lí → đầu ra. Có 3 cấu trúc: <b>tuần tự</b>, <b>rẽ nhánh</b> (nếu ... thì ...), <b>lặp</b>.</p><ul><li>Sơ đồ khối: hình oval là bắt đầu hoặc kết thúc, hình chữ nhật là xử lí, hình bình hành là nhập xuất, hình thoi là điều kiện.</li><li>Ví dụ: tìm số lớn nhất trong 3 số.</li></ul>`],
+['🔎','Tìm kiếm và sắp xếp',`<ul><li><b>Tìm kiếm tuần tự:</b> duyệt từ đầu dãy, xấu nhất phải so sánh n lần.</li><li><b>Tìm kiếm nhị phân:</b> chỉ dùng cho dãy đã sắp xếp. So sánh với phần tử giữa rồi bỏ một nửa. Dãy n phần tử cần tối đa ⌈log₂(n+1)⌉ lần.</li><li><b>Sắp xếp nổi bọt:</b> so sánh các cặp liền kề, đổi chỗ nếu sai thứ tự, lặp lại nhiều lượt.</li></ul><p class="tip">💡 Xem chạy từng bước ở công cụ C và D.</p>`],
+['🐱','Lập trình trực quan (Scratch)',`<ul><li>Chương trình là chuỗi các <b>khối lệnh</b> ghép lại. Mọi chương trình bắt đầu từ một <b>sự kiện</b> (ví dụ khi bấm cờ xanh).</li><li><b>Biến</b> lưu giá trị như điểm số, số mạng.</li><li><b>Rẽ nhánh</b> (nếu ... thì ...) và <b>lặp</b> (lặp n lần, lặp mãi mãi) giúp chương trình ngắn gọn.</li><li><b>Gỡ lỗi:</b> chạy thử từng phần để tìm chỗ sai.</li></ul>`],
+['🐍','Làm quen Python',`<ul><li>In ra: <code>print("Xin chào")</code>. Gán biến: <code>x = 5</code>.</li><li>Nhập: <code>n = int(input())</code> (input luôn trả về chuỗi nên cần đổi sang số).</li><li>Phép toán: <code>+ - * /</code>, <code>//</code> (chia lấy phần nguyên), <code>%</code> (chia lấy dư).</li><li>Rẽ nhánh: <code>if ... :</code> / <code>else:</code>. Lặp: <code>for i in range(n):</code>.</li><li>Python phân biệt <b>thụt lề</b> (4 dấu cách) để nhận biết khối lệnh.</li></ul>`]];
+$('#les').innerHTML='<p class="hint">Chạm vào từng bài để mở. Mỗi bài có mẹo nhớ 💡</p>'+LS.map((l,i)=>`<details class="card"${i==0?' open':''}><summary><span>${l[0]}</span> ${i+1}. ${l[1]}</summary>${l[2]}</details>`).join('');
+const VT=[['🖥️ Phần cứng','CPU|bộ xử lí trung tâm, được coi là bộ não của máy tính;RAM|bộ nhớ trong lưu dữ liệu tạm thời, mất khi tắt máy;Ổ cứng|bộ nhớ ngoài lưu dữ liệu lâu dài;Bàn phím|thiết bị vào dùng để nhập kí tự;Chuột|thiết bị vào dùng để chỉ vị trí và chọn;Màn hình|thiết bị ra hiển thị hình ảnh;Máy in|thiết bị ra in thông tin lên giấy;USB|thiết bị lưu trữ di động;Bo mạch chủ|bảng mạch kết nối các linh kiện của máy tính'],
+['💿 Phần mềm','Hệ điều hành|phần mềm quản lí phần cứng và chạy các phần mềm khác;Phần mềm ứng dụng|phần mềm phục vụ một công việc cụ thể như Word, Excel;Bảng tính|phần mềm xử lí dữ liệu dạng bảng;Trình duyệt|phần mềm để xem trang web;Tệp|đơn vị lưu trữ thông tin trên máy tính;Thư mục|nơi chứa tệp và các thư mục con;Virus máy tính|chương trình độc hại gây hại cho máy;Phần mềm diệt virus|chương trình phát hiện và loại bỏ mã độc;Mã nguồn mở|phần mềm cho phép xem và sửa mã nguồn'],
+['🌐 Mạng và Internet','Mạng máy tính|nhiều máy tính nối với nhau để trao đổi dữ liệu;LAN|mạng cục bộ trong phạm vi nhỏ;WAN|mạng diện rộng nối nhiều khu vực;Internet|mạng toàn cầu nối các mạng với nhau;Router|thiết bị nối mạng với Internet và chọn đường đi cho dữ liệu;Wi-Fi|kết nối mạng không dây;Địa chỉ IP|số định danh của thiết bị trên mạng;URL|địa chỉ của một trang web;Thư điện tử|dịch vụ gửi và nhận thư qua mạng;Máy chủ|máy tính cung cấp dịch vụ cho các máy khác'],
+['💻 Lập trình','Thuật toán|dãy hữu hạn các bước để giải một bài toán;Chương trình|tập hợp các lệnh để máy tính thực hiện;Biến|vùng nhớ có tên dùng để lưu giá trị;Vòng lặp|cấu trúc lặp lại một khối lệnh;Rẽ nhánh|cấu trúc chọn việc làm theo điều kiện;Sơ đồ khối|cách mô tả thuật toán bằng hình vẽ;Lỗi chương trình|sai sót khiến chương trình chạy sai;Gỡ lỗi|tìm và sửa lỗi trong chương trình;Ngôn ngữ lập trình|ngôn ngữ để viết chương trình như Python hay Scratch'],
+['🔐 An toàn thông tin','Mật khẩu mạnh|mật khẩu dài, gồm chữ hoa, chữ thường, số và kí tự đặc biệt;Lừa đảo trực tuyến|giả mạo để đánh cắp thông tin của người dùng;Bản quyền|quyền của tác giả đối với sản phẩm do mình tạo ra;Tường lửa|hệ thống bảo vệ mạng khỏi truy cập trái phép;Sao lưu|tạo bản sao dữ liệu để phòng khi bị mất;Bắt nạt trên mạng|dùng mạng để quấy rối hoặc xúc phạm người khác;Thông tin cá nhân|họ tên, địa chỉ, số điện thoại cần được bảo vệ;Xác thực hai lớp|đăng nhập bằng hai bước xác minh;Dấu chân số|dấu vết thông tin bạn để lại khi dùng mạng']].map(([n,s])=>({n,w:s.split(';').map(x=>x.split('|'))}));
+let vt=0,dk=[],ff=false;
+function vstart(i){vt=i;dk=shuf(VT[i].w);ff=false;vr()}
+function vn(ok){const w=dk.shift();if(!ok)dk.push(w);ff=false;if(ok)spawn('⭐',2);vr()}
+function vr(){let h='<p class="hint">Chọn chủ đề, chạm thẻ để xem định nghĩa.</p><div class="chips" id="vch"></div>';
+if(!dk.length)h+=`<div class="card"><h3>🎉 Bạn đã nhớ hết ${VT[vt].w.length} thuật ngữ!</h3><div class="row"><button class="btn" onclick="vstart(${vt})">Học lại</button></div>${TASK&&P.get('tu')==vt?`<div class="row"><button class="btn" onclick="finish(this,'tu-${vt}')">✅ Mình đã học xong</button></div><p class="hint"></p>`:''}</div>`;
+else h+=`<div class="card"><p class="hint">Còn ${dk.length}/${VT[vt].w.length} thuật ngữ</p><div class="fc" style="font-size:${ff?'1.1rem':'1.9rem'}" onclick="ff=!ff;vr()">${esc(dk[0][ff?1:0])}</div><div class="row"><button class="btn alt" onclick="vn(0)">↻ Chưa nhớ</button><button class="btn" onclick="vn(1)">✓ Đã nhớ</button></div></div>`;
+$('#vw').innerHTML=h;chp('#vch',VT.map((t,i)=>[i,t.n]),()=>vt,k=>vstart(+k))}
+/* ===== Thực hành ===== */
+const SKL=['Chuyển đổi nhị phân','Luyện hàm bảng tính','Sắp xếp nổi bọt','Tìm kiếm nhị phân'];
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+let bits=[0,0,0,0,0,0,0,0],sh=null,bs=null,bn=null;
+function br(){const v=bits.reduce((a,b)=>a*2+b,0);$('#sA').innerHTML=`<p class="hint">Chạm vào từng bit để đổi 0 và 1. Giá trị mỗi vị trí: 128, 64, 32, 16, 8, 4, 2, 1.</p><div class="chips" style="justify-content:center">${bits.map((b,i)=>`<button class="chip" aria-pressed="${!!b}" onclick="bt(${i})"><small>${2**(7-i)}</small><br>${b}</button>`).join('')}</div><p style="text-align:center;font:800 1.3rem 'Baloo 2',sans-serif">${bits.join('')}₂ = ${v}${v>=33&&v<127?` · ASCII: "${String.fromCharCode(v)}"`:''}</p>`}
+function bt(i){bits[i]^=1;br()}
+function shn(){const a=Array.from({length:5},()=>ri(1,20)),r=a.reduce((x,y)=>x+y)%5;a[4]+=(5-r)%5;const sm=a.reduce((x,y)=>x+y),f=rnd(['SUM','AVERAGE','MAX','MIN','COUNT']);sh={a,f,ans:{SUM:sm,AVERAGE:sm/5,MAX:Math.max(...a),MIN:Math.min(...a),COUNT:5}[f]};shr()}
+function shr(){$('#sB').innerHTML=`<p class="hint">Tính kết quả của công thức như bảng tính sẽ làm.</p><table><tr><th></th><th>A</th></tr>${sh.a.map((x,i)=>`<tr><td>${i+1}</td><td>${x}</td></tr>`).join('')}</table><p><b>=${sh.f}(A1:A5)</b> cho kết quả bằng bao nhiêu?</p><input id="shv" type="number" placeholder="Nhập kết quả"><div class="row"><button class="btn" onclick="shc()">Kiểm tra</button><button class="btn alt" onclick="shn()">Bài khác</button></div><p id="shm"></p>`}
+function shc(){const v=$('#shv').value,ok=v!==''&&+v===sh.ans;$('#shm').innerHTML=ok?'<span class="ok2">Chính xác! 🎉</span>':`<span class="bad2">Chưa đúng.</span> Đáp án: ${sh.ans}`;if(ok)spawn('⭐',6)}
+function bsn(){bs={a:Array.from({length:7},()=>ri(1,9)),i:0,j:0,sw:0,cmp:0,done:false,msg:'Bấm "Bước tiếp" để bắt đầu.'};bsr()}
+function bsr(){const h=bs.a.map((x,k)=>`<div style="display:inline-block;width:11%;margin:0 1%;vertical-align:bottom"><div style="height:${x*14}px;background:${k>=bs.a.length-bs.i?'var(--good)':(k==bs.j||k==bs.j+1)?'var(--pink)':'var(--acc)'};border-radius:6px 6px 0 0"></div><b>${x}</b></div>`).join('');
+$('#sC').innerHTML=`<p class="hint">So sánh từng cặp liền kề (màu hồng), đổi chỗ nếu sai thứ tự. Phần màu xanh đã về đúng vị trí.</p><div style="text-align:center">${h}</div><p>${bs.msg}<br>So sánh: <b>${bs.cmp}</b> · Đổi chỗ: <b>${bs.sw}</b></p><div class="row"><button class="btn" onclick="bst()" ${bs.done?'disabled':''}>Bước tiếp</button><button class="btn alt" onclick="bsn()">Dãy mới</button></div>`}
+function bst(){const a=bs.a;if(bs.done)return;bs.cmp++;if(a[bs.j]>a[bs.j+1]){[a[bs.j],a[bs.j+1]]=[a[bs.j+1],a[bs.j]];bs.sw++;bs.msg=`${a[bs.j+1]} lớn hơn ${a[bs.j]} nên đổi chỗ.`}else bs.msg='Đúng thứ tự, giữ nguyên.';bs.j++;if(bs.j>=a.length-1-bs.i){bs.i++;bs.j=0;if(bs.i>=a.length-1){bs.done=true;bs.msg='✅ Đã sắp xếp xong!';spawn('🎉',6)}}bsr()}
+function bnn(){bn={lo:1,hi:100,n:0,done:false};bnr()}
+function bnr(){const m=Math.floor((bn.lo+bn.hi)/2);$('#sD').innerHTML=bn.done?`<p>🎯 Máy tìm ra sau <b>${bn.n}</b> lượt đoán. Với 100 số, tối đa chỉ cần 7 lượt!</p><div class="row"><button class="btn" onclick="bnn()">Chơi lại</button></div>`:`<p class="hint">Hãy nghĩ một số từ 1 đến 100 (đừng nói ra). Máy luôn đoán số ở giữa khoảng còn lại.</p><p>Khoảng còn lại: <b>${bn.lo} – ${bn.hi}</b></p><p style="font:800 1.6rem 'Baloo 2',sans-serif">Số của bạn là ${m}?</p><div class="row"><button class="btn alt" onclick="bnc(-1)">Nhỏ hơn</button><button class="btn" onclick="bnc(0)">Đúng rồi!</button><button class="btn alt" onclick="bnc(1)">Lớn hơn</button></div>`}
+function bnc(d){const m=Math.floor((bn.lo+bn.hi)/2);bn.n++;if(d==0){bn.done=true;spawn('🎉',8)}else if(d<0)bn.hi=m-1;else bn.lo=m+1;if(bn.lo>bn.hi){$('#sD').innerHTML='<p>Có vẻ bạn đã bấm nhầm ở đâu đó 😄</p><div class="row"><button class="btn" onclick="bnn()">Chơi lại</button></div>';return}bnr()}
+br();shn();bsn();bnn();
+const Q=[
+['k','1 byte bằng bao nhiêu bit?',['8','4','16','10'],0,'1 byte = 8 bit.'],
+['k','Thiết bị nào sau đây là thiết bị vào?',['Bàn phím','Màn hình','Máy in','Loa'],0,'Bàn phím đưa dữ liệu vào máy tính. Màn hình, máy in, loa là thiết bị ra.'],
+['k','Phần mềm nào sau đây là hệ điều hành?',['Windows','Excel','Chrome','Word'],0,'Windows quản lí phần cứng và chạy các phần mềm khác.'],
+['k','Ô nằm ở cột C, hàng 5 trong bảng tính có địa chỉ là gì?',['C5','5C','C-5','CC5'],0,'Địa chỉ ô gồm tên cột rồi đến số hàng.'],
+['k','Công thức trong bảng tính bắt đầu bằng kí tự nào?',['=','#','@','?'],0,'Mọi công thức bắt đầu bằng dấu =.'],
+['k','$A$1 là loại địa chỉ nào?',['Tuyệt đối','Tương đối','Hỗn hợp','Không hợp lệ'],0,'Dấu $ giữ cố định cả cột và hàng khi sao chép công thức.'],
+['k','Biểu đồ nào phù hợp nhất để thể hiện tỉ lệ phần trăm các phần trong một tổng?',['Biểu đồ tròn','Biểu đồ cột','Biểu đồ đường','Biểu đồ phân tán'],0,'Biểu đồ tròn thể hiện phần trăm của từng phần trong tổng thể.'],
+['k','Thuật toán là gì?',['Dãy hữu hạn các bước rõ ràng để giải một bài toán','Một phần mềm ứng dụng','Một loại thiết bị phần cứng','Một ngôn ngữ lập trình'],0,'Thuật toán là dãy hữu hạn các bước thực hiện để giải quyết một bài toán.'],
+['k','Trong sơ đồ khối, hình thoi dùng để biểu diễn gì?',['Điều kiện, rẽ nhánh','Bắt đầu, kết thúc','Nhập, xuất dữ liệu','Xử lí'],0,'Hình thoi biểu diễn phép kiểm tra điều kiện.'],
+['k','Cấu trúc nào lặp lại một khối lệnh nhiều lần?',['Vòng lặp','Rẽ nhánh','Tuần tự','Biến'],0,'Cấu trúc lặp (vòng lặp) thực hiện một khối lệnh nhiều lần.'],
+['k','Lệnh nào trong Python dùng để in ra màn hình?',['print()','input()','show()','write()'],0,'print() in giá trị ra màn hình, input() nhận dữ liệu nhập vào.'],
+['k','Địa chỉ IP dùng để làm gì?',['Định danh thiết bị trên mạng','Soạn thảo văn bản','Diệt virus','Nén tệp'],0,'Mỗi thiết bị trong mạng có một địa chỉ IP riêng.'],
+['k','Mật khẩu nào mạnh nhất?',['Hs@2025#Tin9x','12345678','matkhau','ngaysinh2010'],0,'Mật khẩu mạnh dài, có chữ hoa, chữ thường, số và kí tự đặc biệt.'],
+['k','Hành vi nào là bắt nạt trên mạng?',['Đăng ảnh chế giễu bạn lên mạng xã hội','Chia sẻ tài liệu học tập','Chúc mừng sinh nhật bạn','Góp ý lịch sự'],0,'Dùng mạng để chế giễu, xúc phạm người khác là bắt nạt trên mạng.'],
+['k','Thiết bị nào nối mạng trong nhà với Internet?',['Router','Loa','Máy in','Webcam'],0,'Router kết nối mạng cục bộ với Internet.'],
+['k','Khi nhận email lạ yêu cầu bấm liên kết để nhập mật khẩu ngân hàng, bạn nên làm gì?',['Không bấm, báo cho người lớn','Bấm vào và nhập mật khẩu','Chuyển tiếp cho bạn bè','Trả lời kèm số điện thoại'],0,'Đây là dấu hiệu lừa đảo trực tuyến (phishing).'],
+['k','Dãy sắp xếp có 100 phần tử, thuật toán nào tìm kiếm nhanh hơn?',['Tìm kiếm nhị phân','Tìm kiếm tuần tự','Hai thuật toán như nhau','Không tìm được'],0,'Tìm kiếm nhị phân loại một nửa dãy sau mỗi lần so sánh.']];
+const ri2=0;
+const mk=(g,q,c,ds,ex)=>{const o=[String(c)];shuf(ds.map(String)).forEach(d=>{if(d!=='NaN'&&!o.includes(d)&&o.length<4)o.push(d)});return [g,q,o,0,ex]};
+const GC=[
+()=>{const n=ri(4,6),v=ri(3,2**n-1),s=v.toString(2).padStart(n,'0');return mk('c',`Số nhị phân ${s} có giá trị thập phân là bao nhiêu?`,v,[v+1,v-1,parseInt([...s].reverse().join(''),2),v*2,v+2],`Cộng các giá trị vị trí có bit 1: ${s}₂ = ${v}.`)},
+()=>{const v=ri(3,40);return mk('c',`Số ${v} ở hệ thập phân viết sang hệ nhị phân là gì?`,v.toString(2),[(v^1).toString(2),(v+1).toString(2),(v-1).toString(2),(v*2).toString(2),(v+2).toString(2)],`Chia liên tiếp cho 2 rồi ghi các số dư từ dưới lên: ${v} = ${v.toString(2)}₂.`)},
+()=>{const [a,b,m]=rnd([['byte','bit',8],['KB','byte',1024],['MB','KB',1024],['GB','MB',1024]]),n=ri(2,9);return mk('c',`${n} ${a} bằng bao nhiêu ${b}?`,n*m,[n*1000,n*m*2,n*m+n,n*100,n*10],`1 ${a} = ${m} ${b} nên ${n} ${a} = ${n*m} ${b}.`)},
+()=>{const a=Array.from({length:5},()=>ri(1,20)),r=a.reduce((x,y)=>x+y)%5;a[4]+=(5-r)%5;const sm=a.reduce((x,y)=>x+y),f=rnd(['SUM','AVERAGE','MAX','MIN','COUNT']),an={SUM:sm,AVERAGE:sm/5,MAX:Math.max(...a),MIN:Math.min(...a),COUNT:5}[f];return mk('c',`Các ô A1:A5 chứa lần lượt ${a.join(', ')}. Công thức =${f}(A1:A5) cho kết quả là bao nhiêu?`,an,[an+1,an-1,an+2,an*2,sm-1,Math.max(...a)+1],`Hàm ${f} áp dụng cho vùng A1:A5 cho kết quả ${an}.`)},
+()=>{const a=ri(5,20),b=ri(2,5),o=rnd(['+','-','*','//','%']),v={'+':a+b,'-':a-b,'*':a*b,'//':Math.floor(a/b),'%':a%b}[o];return mk('c',`Kết quả của lệnh print(${a} ${o} ${b}) trong Python là gì?`,v,[a+b,a-b,a*b,Math.floor(a/b),a%b,v+1,v+2],`${a} ${o} ${b} = ${v}. (// là chia lấy phần nguyên, % là chia lấy phần dư).`)},
+()=>{const n=ri(3,6),s=n*(n+1)/2;return mk('c',`Đoạn chương trình Python sau in ra giá trị nào?<br><code>s = 0<br>for i in range(1, ${n+1}):<br>&nbsp;&nbsp;&nbsp;&nbsp;s = s + i<br>print(s)</code>`,s,[n*n,s-n,s+n,n,s+1],`Vòng lặp cộng các số từ 1 đến ${n}, kết quả là ${s}.`)},
+()=>{const x=ri(5,15),t=ri(5,15),r=x>t?'A':'B';return mk('c',`Đoạn chương trình sau in ra gì?<br><code>x = ${x}<br>if x &gt; ${t}:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("A")<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("B")</code>`,r,['A','B','AB','Không in gì'],`Điều kiện x &gt; ${t} với x = ${x} là ${x>t?'đúng':'sai'} nên in ${r}.`)},
+()=>{let a;do{a=shuf([1,2,3,4,5,6,7,8,9]).slice(0,5)}while(a.every((x,i)=>!i||a[i-1]<=x));const p=[...a];for(let i=0;i<4;i++)if(p[i]>p[i+1])[p[i],p[i+1]]=[p[i+1],p[i]];const j=x=>x.join(', ');return mk('c',`Cho dãy ${j(a)}. Sau lượt đầu tiên của sắp xếp nổi bọt (tăng dần), dãy trở thành?`,j(p),[j([...a].sort((x,y)=>x-y)),j(a),j([a[1],a[0],...a.slice(2)]),j([...a].sort((x,y)=>y-x)),j([...a.slice(1),a[0]])],'Duyệt từ đầu, so sánh từng cặp liền kề và đổi chỗ nếu sai thứ tự. Sau lượt đầu, số lớn nhất nổi lên cuối dãy.')},
+()=>{const n=rnd([7,15,31,63,100,127]),c=Math.ceil(Math.log2(n+1));return mk('c',`Dãy đã sắp xếp có ${n} phần tử. Tìm kiếm nhị phân cần tối đa bao nhiêu lần so sánh?`,c,[c+1,c-1,c+2,Math.floor(n/2),n],`Mỗi lần so sánh loại bỏ một nửa dãy nên cần tối đa ⌈log₂(${n}+1)⌉ = ${c} lần.`)},
+()=>{const a=shuf([2,4,5,7,8,9,11,13,15]).slice(0,6),p=ri(1,6),x=a[p-1];return mk('c',`Tìm số ${x} trong dãy ${a.join(', ')} bằng tìm kiếm tuần tự. Cần so sánh bao nhiêu lần?`,p,[p+1,p+2,p>1?p-1:7,6,1,2],`Duyệt từ đầu dãy, số ${x} ở vị trí ${p} nên cần ${p} lần so sánh.`)}];
+const ALLT=VT.flatMap(t=>t.w);
+const GT=[()=>{const w=rnd(ALLT);return mk('t',`"${w[0]}" là gì?`,w[1],shuf(ALLT).slice(0,6).map(x=>x[1]),`${w[0]}: ${w[1]}.`)},()=>{const w=rnd(ALLT);return mk('t',`Thuật ngữ nào có nghĩa là: ${w[1]}?`,w[0],shuf(ALLT).slice(0,6).map(x=>x[0]),`${w[1]} là ${w[0]}.`)}];
+function best(k,v){try{if(v!=null)localStorage.setItem('tin'+k,v);return +localStorage.getItem('tin'+k)||0}catch(e){return 0}}
+function chp(box,items,cur,set){const b=$(box);b.innerHTML='';items.forEach(([k,l])=>{const x=document.createElement('button');x.className='chip';x.textContent=l;x.setAttribute('aria-pressed',k==cur());x.onclick=()=>{set(k);chp(box,items,cur,set)};b.appendChild(x)})}
+function begin(){const st=Q.filter(q=>qt=='a'||q[0]==qt),g=()=>rnd(GEN)();let l;
+if(qt=='c')l=Array.from({length:qn},g);else if(qt=='a'){const k=Math.round(qn*.3);l=[...shuf(st).slice(0,qn-k),...Array.from({length:k},g)]}else l=shuf(st).slice(0,qn);
+qs=shuf(l);qi=0;sc=0;qrun=true;qz()}
+function qz(){const el=$('#quiz');
+if(!qrun){el.innerHTML=`<h3>Luyện tập ngẫu nhiên 🎲</h3><p class="hint">Mỗi lần bấm Bắt đầu, câu hỏi và thứ tự đáp án đều được xáo trộn. Câu tự sinh luôn có từ và số liệu mới.</p><b>Chủ đề</b><div class="chips" id="qc"></div><p style="margin:8px 0 4px"><b>Số câu</b></p><div class="chips" id="qn"></div><div class="row"><button class="btn" id="go">Bắt đầu 🚀</button></div><p class="hint">Kho hiện có ${Q.length} câu soạn sẵn và không giới hạn câu tự sinh.</p>`;
+chp('#qc',Object.entries(ST),()=>qt,k=>qt=k);chp('#qn',[[10,'10 câu'],[20,'20 câu'],[30,'30 câu']],()=>qn,k=>qn=+k);$('#go').onclick=begin;return}
+if(qi>=qs.length){const b=Math.max(best(qt),sc);best(qt,b);
+el.innerHTML=`<h3>Bạn đúng ${sc}/${qs.length} câu</h3><p>${sc==qs.length?'Tuyệt vời, nhà hoá học thực thụ! 🏆':sc>=qs.length*.7?'Khá lắm! Ôn thêm chút nữa là hoàn hảo.':'Đừng nản, xem lại bài học rồi thử bộ câu khác nhé.'}</p><p class="hint">Điểm cao nhất ở chủ đề ${ST[qt]}: ${b}</p><div class="row"><button class="btn" id="ag">Bộ câu khác 🔀</button><button class="btn alt" id="bk2">Đổi chủ đề</button></div>`;
+if(sc==qs.length)spawn('🎉',10);const pct=sc/qs.length*100;
+save('quiz-'+qt,sc,qs.length,!!P.get('quiz')&&pct>=PASS).then(m=>{if(qi>=qs.length&&qrun)el.insertAdjacentHTML('beforeend',`<p class="hint">${esc(m)}${P.get('quiz')&&pct<PASS?` Cần đạt ${PASS}% để hoàn thành bài được giao. Thử bộ câu khác nhé!`:''}</p>`)});$('#ag').onclick=begin;$('#bk2').onclick=()=>{qrun=false;qz()};return}
+const q=qs[qi];el.innerHTML=`<div class="bar"><i style="width:${qi/qs.length*100}%"></i></div><p class="hint">${ST[qt]} – câu ${qi+1}/${qs.length}</p><h3>${sub(q[1])}</h3>`+q[2].map((o,i)=>[o,i]).sort(()=>Math.random()-.5).map(([o,i])=>`<button class="opt" data-i="${i}">${sub(o)}</button>`).join('')+'<div id="fb"></div>';
+el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;
+el.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.i===q[3])x.classList.add('ok')});
+if(i===q[3]){sc++;spawn('⭐',5)}else b.classList.add('no');
+$('#fb').innerHTML=`<div class="why"><b>${i===q[3]?'Chính xác! 🎉':'Chưa đúng 😅'}</b> ${sub(q[4])}</div><div class="row"><button class="btn" id="nx">${qi==qs.length-1?'Xem kết quả':'Câu tiếp'}</button></div>`;
+$('#nx').onclick=()=>{qi++;qz()}})}
+
+function begin(){const S=shuf(Q),l=[],seen=new Set();let tr=0;
+while(l.length<qn&&tr++<qn*8){const t=qt=='a'?rnd(['k','c','c','t']):qt;
+const q=(t=='k'&&S.length)?S.pop():rnd(t=='t'?GT:GC)();if(seen.has(q[1]))continue;seen.add(q[1]);l.push(q)}
+qs=l;qi=0;sc=0;qrun=true;qz()}
+function assigned(){const b=+P.get('bai'),k=P.get('kn'),q=P.get('quiz'),u=P.get('tu'),a=$('#asg'),go=t=>document.querySelector(`nav [data-t=${t}]`).click(),
+dn=id=>`<div class="row"><button class="btn" onclick="finish(this,'${id}')">✅ Mình đã học xong</button></div><p class="hint"></p>`,
+bn=t=>{a.style.display='block';a.innerHTML='📌 <b>Bài được giao:</b> '+t};
+if(b&&LS[b-1]){bn(`Bài ${b}. ${esc(LS[b-1][1])}`);const d=$('#les').querySelectorAll('details')[b-1];d.open=true;d.insertAdjacentHTML('beforeend',dn('bai-'+b));go('t0');setTimeout(()=>d.scrollIntoView(),60)}
+else if(u!=null&&VT[+u]){bn(`Thuật ngữ: ${esc(VT[+u].n)}`);vstart(+u);go('t1')}
+else if(k&&k.length==1&&'ABCD'.includes(k)){const i='ABCD'.indexOf(k),d=[...$('#sk').children].filter(x=>x.tagName=='DETAILS')[i];bn(`Kỹ năng ${k}. ${SKL[i]}`);d.open=true;d.insertAdjacentHTML('beforeend',dn('kn-'+k));go('t2');setTimeout(()=>d.scrollIntoView(),60)}
+else if(q&&ST[q]){qt=q;qn=+P.get('n')||10;bn(`làm ${qn} câu ${ST[q]}, cần đạt ${PASS}% để hoàn thành.`);go('t3');begin()}}
+function topicName(t){t=t.replace('tin:','');const [k,v]=t.split('-');return k=='bai'?'Bài '+v+(LS[v-1]?': '+LS[v-1][1]:''):k=='tu'?'Thuật ngữ: '+(VT[v]?VT[v].n:v):k=='kn'?'Kỹ năng '+v+': '+(SKL['ABCD'.indexOf(v)]||''):'Luyện '+(ST[v]||v)}
+async function rs(){const el=$('#rs');
+if(!sb||!ME){el.innerHTML='<h3>Kết quả</h3><p class="hint">Đăng nhập (qua Việc nhà) để xem kết quả của cả nhà.</p>';return}
+el.innerHTML='<p class="hint">Đang tải…</p>';
+try{const {data,error}=await sb.from('hoa_results').select('*').like('topic','tin:%').order('created_at',{ascending:false}).limit(40);if(error)throw error;
+el.innerHTML='<h3>Kết quả gần đây</h3>'+((data||[]).map(r=>`<p style="margin:8px 0"><b>${esc(MEM[r.user_id]||'Ai đó')}</b> · ${esc(topicName(r.topic))}${r.total?` · <b>${r.score}/${r.total}</b>`:' · ✅ đã học'}<br><span class="hint">${new Date(r.created_at).toLocaleString('vi-VN')}</span></p>`).join('')||'<p class="hint">Chưa có kết quả nào.</p>')}catch(e){el.innerHTML='<p class="hint">Không tải được: '+esc(e.message)+'</p>'}}
+document.querySelector('[data-t=t4]').addEventListener('click',rs);
+vstart(0);qz();assigned();acct();
+</script></body></html>
